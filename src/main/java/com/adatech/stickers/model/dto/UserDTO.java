@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 
     @NotBlank(message = "O campo nome é obrigatório")
-    private String nome;
+    private String name;
 
     @NotBlank(message = "O campo documento é obrigatório")
-    private String documento;
-
+    private String document;
 
 }

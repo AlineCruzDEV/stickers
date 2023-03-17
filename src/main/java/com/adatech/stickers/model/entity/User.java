@@ -16,8 +16,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "nome", nullable = false, unique = true)
-    private String nome;
-    @Column(name = "documento")
-    private String documento;
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
+    @Column(name = "document")
+    private String document;
+
 }
