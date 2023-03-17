@@ -1,6 +1,7 @@
-package com.adatech.stickers.controller;
+package com.adatech.stickers.user.controller;
 
-import com.adatech.stickers.service.BaseService;
+import com.adatech.stickers.user.model.dto.UserDTO;
+import com.adatech.stickers.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -11,18 +12,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/usuarios")
 @Slf4j
-public abstract class BaseController<T, S extends BaseService<T>> {
+public class UserController {
 
-    protected final S service;
+    protected final UserService service;
 
-    public BaseController(S service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<List<T>> findAll() {
-        List<T> result = service.findAll();
+    public ResponseEntity<List<UserDTO>> findAll() {
+        List<UserDTO> result = service.findAll();
         if(result.size() == 0) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(result);
         } else {
@@ -32,7 +35,7 @@ public abstract class BaseController<T, S extends BaseService<T>> {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<T> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<UserDTO> findById(@PathVariable("id") Long id) {
         try {
 
             return ResponseEntity.ok(service.findById(id));
@@ -48,7 +51,7 @@ public abstract class BaseController<T, S extends BaseService<T>> {
     }
 
     @PostMapping
-    public ResponseEntity<T> create(@RequestBody @Valid T entidade) {
+    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserDTO entidade) {
         try {
 
             return ResponseEntity
@@ -63,8 +66,8 @@ public abstract class BaseController<T, S extends BaseService<T>> {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<T> edit(@PathVariable("id") Long id,
-                                  @RequestBody @Valid T entidade) {
+    public ResponseEntity<UserDTO> edit(@PathVariable("id") Long id,
+                                        @RequestBody @Valid UserDTO entidade) {
         try {
 
             return ResponseEntity.ok(service.edit(id, entidade));
@@ -82,7 +85,6 @@ public abstract class BaseController<T, S extends BaseService<T>> {
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") Long id) {
         try {
-
             service.delete(id);
             return ResponseEntity.status(HttpStatus.OK).build();
 
@@ -95,4 +97,5 @@ public abstract class BaseController<T, S extends BaseService<T>> {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
 }

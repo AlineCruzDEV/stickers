@@ -1,9 +1,9 @@
-package com.adatech.stickers.service.impl;
-import com.adatech.stickers.model.dto.UserDTO;
-import com.adatech.stickers.model.entity.User;
-import com.adatech.stickers.model.mapper.UserMapper;
-import com.adatech.stickers.repository.UserRepository;
-import com.adatech.stickers.service.UserService;
+package com.adatech.stickers.user.service.impl;
+import com.adatech.stickers.user.model.dto.UserDTO;
+import com.adatech.stickers.user.model.entity.User;
+import com.adatech.stickers.user.model.mapper.UserMapper;
+import com.adatech.stickers.user.repository.UserRepository;
+import com.adatech.stickers.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;

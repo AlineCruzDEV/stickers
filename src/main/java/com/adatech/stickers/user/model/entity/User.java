@@ -1,4 +1,4 @@
-package com.adatech.stickers.model.entity;
+package com.adatech.stickers.user.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
