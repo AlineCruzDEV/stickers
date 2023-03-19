@@ -11,7 +11,6 @@ public interface UserMapper {
 
     UserDTO parseDTO(User user);
     User parseEntity(UserDTO userDTO);
-
     List<UserDTO> parseListDTO(List<User> users);
 
 }

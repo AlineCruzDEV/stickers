@@ -1,7 +1,6 @@
 package br.com.ada.users.user.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,17 +8,25 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class AddressDTO {
-
-    @NotBlank(message = "Campo obrigatorio")
+    @NotBlank(message = "Street field is missing or blank.")
     private String street;
-    @NotBlank(message = "Campo obrigatorio")
+
+    @NotBlank(message = "Number field is missing or blank.")
+    private String number;
+
+    @NotBlank(message = "Neighborhood field is missing or blank.")
     private String neighborhood;
-    @NotNull @Pattern(regexp = "\\d{8}")
-    private String zipCode;
-    @NotBlank(message = "Campo obrigatorio")
+
+    private String complement;
+
+    @NotBlank(message = "City field is missing or blank.")
     private String city;
-    @NotBlank(message = "Campo obrigatorio")
-    String state;
-    String complement;
-    String number;
+
+    @NotBlank(message = "State field is missing or blank.")
+    @Pattern(regexp="\\d{2}")
+    private String state;
+
+    @NotBlank(message = "Zipcode field is missing or blank.")
+    @Pattern(regexp="\\d{8}")
+    private String zipCode;
 }

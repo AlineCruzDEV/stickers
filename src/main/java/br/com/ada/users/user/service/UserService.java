@@ -1,6 +1,5 @@
 package br.com.ada.users.user.service;
 
-
 import br.com.ada.users.user.model.dto.UserDTO;
 
 import java.util.List;
