@@ -1,6 +1,8 @@
 package br.com.ada.users.user.controller;
 
+import br.com.ada.users.user.model.dto.UserCreationDTO;
 import br.com.ada.users.user.model.dto.UserDTO;
+import br.com.ada.users.user.model.dto.UserUpdateDTO;
 import br.com.ada.users.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -51,14 +53,12 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserDTO entidade) {
+    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserCreationDTO entidade) {
         try {
-
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(service.create(entidade));
-
         } catch (Exception ex) {
             log.error(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -67,16 +67,12 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UserDTO> edit(@PathVariable("id") Long id,
-                                        @RequestBody @Valid UserDTO entidade) {
+                                        @RequestBody @Valid UserUpdateDTO entidade) {
         try {
-
             return ResponseEntity.ok(service.edit(id, entidade));
-
         } catch (EntityNotFoundException ex) {
-
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } catch (Exception ex) {
-
             log.error(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

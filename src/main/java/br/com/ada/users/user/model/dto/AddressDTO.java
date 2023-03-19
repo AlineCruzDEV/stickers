@@ -1,8 +1,5 @@
 package br.com.ada.users.user.model.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,16 +7,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddressDTO {
 
-    @NotBlank(message = "Campo obrigatorio")
+    private Long id;
+
     private String street;
-    @NotBlank(message = "Campo obrigatorio")
+
+    private String number;
+
     private String neighborhood;
-    @NotNull @Pattern(regexp = "\\d{8}")
-    private String zipCode;
-    @NotBlank(message = "Campo obrigatorio")
+
+    private String complement;
+
     private String city;
-    @NotBlank(message = "Campo obrigatorio")
-    String state;
-    String complement;
-    String number;
+
+    private String state;
+
+    private String zipCode;
 }
