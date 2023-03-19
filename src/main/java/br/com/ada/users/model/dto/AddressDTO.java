@@ -1,4 +1,4 @@
-package br.com.ada.users.user.model.dto;
+package br.com.ada.users.model.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
