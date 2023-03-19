@@ -1,11 +1,15 @@
 package br.com.ada.users.user.service.impl;
+
+import br.com.ada.users.user.model.dto.UserCreationDTO;
 import br.com.ada.users.user.model.dto.UserDTO;
+import br.com.ada.users.user.model.dto.UserUpdateDTO;
 import br.com.ada.users.user.model.entity.User;
 import br.com.ada.users.user.model.mapper.UserMapper;
 import br.com.ada.users.user.repository.UserRepository;
 import br.com.ada.users.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -32,12 +36,11 @@ public class UserServiceImpl implements UserService {
             User user = userOptional.get();
             return mapper.parseDTO(user);
         }
-
         throw new EntityNotFoundException();
     }
 
     @Override
-    public UserDTO create(UserDTO entity) {
+    public UserDTO create(UserCreationDTO entity) {
         User user = mapper.parseEntity(entity);
         user.setId(null);
         repository.save(user);
@@ -45,14 +48,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO edit(Long id, UserDTO entity) {
-        if (repository.existsById(id)) {
+    public UserDTO edit(Long id, UserUpdateDTO entity) {
+        Optional<User> optional = repository.findById(id);
+        if (optional.isPresent()) {
             User user = mapper.parseEntity(entity);
             user.setId(id);
+            user.setAddress(optional.get().getAddress());
             user = repository.save(user);
             return mapper.parseDTO(user);
         }
-
         throw new EntityNotFoundException();
     }
 
