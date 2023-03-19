@@ -1,7 +1,7 @@
-package com.adatech.stickers.user.controller;
+package br.com.ada.users.user.controller;
 
-import com.adatech.stickers.user.model.dto.UserDTO;
-import com.adatech.stickers.user.service.UserService;
+import br.com.ada.users.user.model.dto.UserDTO;
+import br.com.ada.users.user.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;

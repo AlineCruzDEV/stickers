@@ -1,13 +1,13 @@
-package com.adatech.stickers;
+package br.com.ada.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StickersApplication {
+public class UsersApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StickersApplication.class, args);
+        SpringApplication.run(UsersApplication.class, args);
     }
 
 }

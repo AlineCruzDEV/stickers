@@ -1,4 +1,4 @@
-package com.adatech.stickers.user.model.entity;
+package br.com.ada.users.user.model.entity;
 
 public class Address {
     private String street;

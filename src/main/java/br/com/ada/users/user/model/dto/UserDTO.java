@@ -1,4 +1,4 @@
-package com.adatech.stickers.user.model.dto;
+package br.com.ada.users.user.model.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

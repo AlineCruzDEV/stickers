@@ -8,14 +8,14 @@
         <version>3.0.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.adatech</groupId>
-    <artifactId>stickers</artifactId>
+    <groupId>br.com.ada</groupId>
+    <artifactId>users</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>stickers</name>
-    <description>stickers</description>
+    <name>users</name>
+    <description>users</description>
     <properties>
-        <java.version>17</java.version>
-        <maven.compiler.release>17</maven.compiler.release>
+        <java.version>11</java.version>
+        <maven.compiler.release>11</maven.compiler.release>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
     </properties>
