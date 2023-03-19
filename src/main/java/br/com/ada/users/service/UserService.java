@@ -1,8 +1,8 @@
-package br.com.ada.users.user.service;
+package br.com.ada.users.service;
 
-import br.com.ada.users.user.model.dto.UserCreationDTO;
-import br.com.ada.users.user.model.dto.UserDTO;
-import br.com.ada.users.user.model.dto.UserUpdateDTO;
+import br.com.ada.users.model.dto.UserCreationDTO;
+import br.com.ada.users.model.dto.UserDTO;
+import br.com.ada.users.model.dto.UserUpdateDTO;
 
 import java.util.List;
 

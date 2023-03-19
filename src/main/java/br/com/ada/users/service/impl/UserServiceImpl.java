@@ -1,12 +1,12 @@
-package br.com.ada.users.user.service.impl;
+package br.com.ada.users.service.impl;
 
-import br.com.ada.users.user.model.dto.UserCreationDTO;
-import br.com.ada.users.user.model.dto.UserDTO;
-import br.com.ada.users.user.model.dto.UserUpdateDTO;
-import br.com.ada.users.user.model.entity.User;
-import br.com.ada.users.user.model.mapper.UserMapper;
-import br.com.ada.users.user.repository.UserRepository;
-import br.com.ada.users.user.service.UserService;
+import br.com.ada.users.model.dto.UserCreationDTO;
+import br.com.ada.users.model.dto.UserDTO;
+import br.com.ada.users.model.dto.UserUpdateDTO;
+import br.com.ada.users.model.entity.User;
+import br.com.ada.users.model.mapper.UserMapper;
+import br.com.ada.users.repository.UserRepository;
+import br.com.ada.users.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 

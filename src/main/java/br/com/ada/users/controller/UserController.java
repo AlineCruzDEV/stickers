@@ -1,9 +1,9 @@
-package br.com.ada.users.user.controller;
+package br.com.ada.users.controller;
 
-import br.com.ada.users.user.model.dto.UserCreationDTO;
-import br.com.ada.users.user.model.dto.UserDTO;
-import br.com.ada.users.user.model.dto.UserUpdateDTO;
-import br.com.ada.users.user.service.UserService;
+import br.com.ada.users.model.dto.UserCreationDTO;
+import br.com.ada.users.model.dto.UserDTO;
+import br.com.ada.users.model.dto.UserUpdateDTO;
+import br.com.ada.users.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/users")
 @Slf4j
 public class UserController {
 
@@ -28,37 +28,31 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
         List<UserDTO> result = service.findAll();
-        if(result.size() == 0) {
+        if (result.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(result);
-        } else {
-            return ResponseEntity.ok(result);
         }
-
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable("id") Long id) {
         try {
-
             return ResponseEntity.ok(service.findById(id));
-
         } catch (EntityNotFoundException ex) {
-
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (Exception ex) {
-
             log.error(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserCreationDTO entidade) {
+    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserCreationDTO creationDTO) {
         try {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(service.create(entidade));
+                    .body(service.create(creationDTO));
         } catch (Exception ex) {
             log.error(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -67,9 +61,9 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UserDTO> edit(@PathVariable("id") Long id,
-                                        @RequestBody @Valid UserUpdateDTO entidade) {
+                                        @RequestBody @Valid UserUpdateDTO updateDTO) {
         try {
-            return ResponseEntity.ok(service.edit(id, entidade));
+            return ResponseEntity.ok(service.edit(id, updateDTO));
         } catch (EntityNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } catch (Exception ex) {
@@ -83,12 +77,9 @@ public class UserController {
         try {
             service.delete(id);
             return ResponseEntity.status(HttpStatus.OK).build();
-
         } catch (EntityNotFoundException ex) {
-
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } catch (Exception ex) {
-
             log.error(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
