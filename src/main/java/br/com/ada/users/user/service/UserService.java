@@ -1,7 +1,7 @@
-package com.adatech.stickers.user.service;
+package br.com.ada.users.user.service;
 
 
-import com.adatech.stickers.user.model.dto.UserDTO;
+import br.com.ada.users.user.model.dto.UserDTO;
 
 import java.util.List;
 

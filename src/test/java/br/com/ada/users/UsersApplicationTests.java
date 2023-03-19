@@ -1,10 +1,10 @@
-package com.adatech.stickers;
+package br.com.ada.users;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StickersApplicationTests {
+class UsersApplicationTests {
 
     @Test
     void contextLoads() {
