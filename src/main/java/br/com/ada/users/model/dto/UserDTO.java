@@ -17,4 +17,6 @@ public class UserDTO {
 
     private AddressDTO address;
 
+//    private List<Phone> phones;
+
 }

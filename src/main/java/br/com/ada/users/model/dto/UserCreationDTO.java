@@ -23,4 +23,7 @@ public class UserCreationDTO {
     @NotNull(message = "At least one address must be informed.")
     private AddressCreationDTO address;
 
+//    @NotNull(message = "At least one phone must be informed.")
+//    private List<PhoneCreationDTO> phones;
+
 }
