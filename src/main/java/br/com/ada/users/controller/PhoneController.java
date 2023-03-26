@@ -1,11 +1,9 @@
 package br.com.ada.users.controller;
 
+import br.com.ada.users.model.dto.PhoneCreationDTO;
 import br.com.ada.users.model.dto.PhoneDTO;
-import br.com.ada.users.model.dto.UserCreationDTO;
-import br.com.ada.users.model.dto.UserDTO;
-import br.com.ada.users.model.dto.UserUpdateDTO;
-import br.com.ada.users.model.mapper.PhoneMapper;
-import br.com.ada.users.service.UserService;
+import br.com.ada.users.model.dto.PhoneUpdateDTO;
+import br.com.ada.users.service.PhoneService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -17,21 +15,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/phones")
 @Slf4j
-public class UserController {
+public class PhoneController {
 
-    protected final UserService service;
-    private final PhoneMapper phoneMapper;
-
-    public UserController(final UserService service, final PhoneMapper phoneMapper) {
+    protected final PhoneService service;
+    public PhoneController(PhoneService service) {
         this.service = service;
-        this.phoneMapper = phoneMapper;
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> findAll() {
-        List<UserDTO> result = service.findAll();
+    public ResponseEntity<List<PhoneDTO>> findAll() {
+        List<PhoneDTO> result = service.findAll();
         if (result.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(result);
         }
@@ -39,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable("id") String id) {
+    public ResponseEntity<PhoneDTO> findById(@PathVariable("id") String id) {
         try {
             return ResponseEntity.ok(service.findById(id));
         } catch (EntityNotFoundException ex) {
@@ -51,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserCreationDTO creationDTO) {
+    public ResponseEntity<PhoneDTO> create(@RequestBody @Valid PhoneCreationDTO creationDTO) {
         try {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
@@ -64,8 +59,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> edit(@PathVariable("id") String id,
-                                        @RequestBody @Valid UserUpdateDTO updateDTO) {
+    public ResponseEntity<PhoneDTO> edit(@PathVariable("id") String id,
+                                        @RequestBody @Valid PhoneUpdateDTO updateDTO) {
         try {
             return ResponseEntity.ok(service.edit(id, updateDTO));
         } catch (EntityNotFoundException ex) {
@@ -83,19 +78,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (EntityNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        } catch (Exception ex) {
-            log.error(ex.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
-
-    @GetMapping("/{id}/phones")
-    public ResponseEntity<List<PhoneDTO>> findPhones(@PathVariable("id") String id) {
-        try {
-            List<PhoneDTO> phonesDTO = phoneMapper.parseListDTO(service.findPhones(id));
-            return ResponseEntity.ok(phonesDTO);
-        } catch (EntityNotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (Exception ex) {
             log.error(ex.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
