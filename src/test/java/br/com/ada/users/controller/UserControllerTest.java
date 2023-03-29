@@ -3,7 +3,6 @@ package br.com.ada.users.controller;
 import br.com.ada.users.model.dto.UserCreationDTO;
 import br.com.ada.users.model.dto.UserDTO;
 import br.com.ada.users.model.dto.UserUpdateDTO;
-import br.com.ada.users.model.mapper.PhoneMapper;
 import br.com.ada.users.service.impl.UserServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,7 +25,7 @@ public class UserControllerTest {
     @Mock
     private UserServiceImpl userService;
 
-    private PhoneMapper phoneMapper;
+    //private PhoneMapper phoneMapper;
 
     @InjectMocks
     private UserController userController;
