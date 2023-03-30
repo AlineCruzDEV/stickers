@@ -1,25 +1,25 @@
 package br.com.ada.users.controller;
 
-import br.com.ada.users.model.dto.PhoneCreationDTO;
-import br.com.ada.users.model.dto.PhoneDTO;
-import br.com.ada.users.model.dto.PhoneUpdateDTO;
-import br.com.ada.users.service.impl.PhoneServiceImpl;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import static org.mockito.ArgumentMatchers.anyString;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyString;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-@RunWith(MockitoJUnitRunner.class)
+import br.com.ada.users.model.dto.PhoneCreationDTO;
+import br.com.ada.users.model.dto.PhoneDTO;
+import br.com.ada.users.model.dto.PhoneUpdateDTO;
+import br.com.ada.users.service.impl.PhoneServiceImpl;
+
+@SpringBootTest
 public class PhoneControllerTest {
     @Mock
     private PhoneServiceImpl phoneService;

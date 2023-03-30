@@ -1,25 +1,25 @@
 package br.com.ada.users.controller;
 
-import br.com.ada.users.model.dto.UserCreationDTO;
-import br.com.ada.users.model.dto.UserDTO;
-import br.com.ada.users.model.dto.UserUpdateDTO;
-import br.com.ada.users.service.impl.UserServiceImpl;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import static org.mockito.ArgumentMatchers.anyString;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyString;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-@RunWith(MockitoJUnitRunner.class)
+import br.com.ada.users.model.dto.UserCreationDTO;
+import br.com.ada.users.model.dto.UserDTO;
+import br.com.ada.users.model.dto.UserUpdateDTO;
+import br.com.ada.users.service.impl.UserServiceImpl;
+
+@SpringBootTest
 public class UserControllerTest {
 
     @Mock
